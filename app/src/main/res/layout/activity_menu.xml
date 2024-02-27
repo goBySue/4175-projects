@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MenuActivity">
+
+    <TextView
+        android:id="@+id/goalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="Goal"
+        app:layout_constraintEnd_toEndOf="@+id/goalBtn"
+        app:layout_constraintStart_toStartOf="@+id/goalBtn"
+        app:layout_constraintTop_toBottomOf="@+id/goalBtn" />
+
+    <TextView
+        android:id="@+id/recordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="85dp"
+        android:text="Record"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reminderBtn"
+        app:layout_constraintTop_toBottomOf="@+id/recordBtn" />
+
+    <TextView
+        android:id="@+id/reminderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Reminder"
+        app:layout_constraintEnd_toEndOf="@+id/reminderBtn"
+        app:layout_constraintStart_toStartOf="@+id/reminderBtn"
+        app:layout_constraintTop_toBottomOf="@+id/reminderBtn" />
+
+    <TextView
+        android:id="@+id/searchTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Nutriiton"
+        app:layout_constraintEnd_toEndOf="@+id/searchBtn"
+        app:layout_constraintStart_toStartOf="@+id/searchBtn"
+        app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
+
+    <ImageButton
+        android:id="@+id/recordBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/record"
+        android:textColor="@android:color/white"
+        android:textColorHighlight="@color/material_on_primary_disabled"
+        android:textColorLink="@color/material_on_primary_disabled"
+        app:layout_constraintBottom_toBottomOf="@+id/goalBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/goalBtn"
+        app:layout_constraintTop_toTopOf="@+id/goalBtn"
+        tools:ignore="LabelForSpeakableTextPresentCheck"/>
+
+    <ImageButton
+        android:id="@+id/goalBtn"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="28dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/goal"
+        android:textColor="@android:color/white"
+        android:textColorHighlight="@color/material_on_primary_disabled"
+        android:textColorLink="@color/material_on_primary_disabled"
+        app:layout_constraintEnd_toStartOf="@+id/recordBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="LabelForSpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/reminderBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="18dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/alarm"
+        android:textColor="@android:color/white"
+        android:textColorHighlight="@color/material_on_primary_disabled"
+        android:textColorLink="@color/material_on_primary_disabled"
+        app:layout_constraintBottom_toBottomOf="@+id/searchBtn"
+        app:layout_constraintEnd_toStartOf="@+id/searchBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchBtn"
+        tools:ignore="LabelForSpeakableTextPresentCheck"/>
+
+    <ImageButton
+        android:id="@+id/searchBtn"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="163dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/search"
+        android:textColor="@android:color/white"
+        android:textColorHighlight="@color/material_on_primary_disabled"
+        android:textColorLink="@color/material_on_primary_disabled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reminderBtn"
+        tools:ignore="LabelForSpeakableTextPresentCheck"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
