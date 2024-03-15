@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openMenuActivity();
+                openLoginActivity();
             }
         });
 
@@ -37,10 +37,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void openMenuActivity() {
-        Intent intent = new Intent(this, MenuActivity.class);
+    private void openLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
+//    private void openMenuActivity() {
+//        Intent intent = new Intent(this, MenuActivity.class);
+//        startActivity(intent);
+//    }
 
     private void openRegisterActivity() {
         Intent intent = new Intent(this, RegisterActivity.class);

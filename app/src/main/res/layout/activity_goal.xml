@@ -10,49 +10,81 @@
     <TextView
         android:id="@+id/greetingTextView"
         android:layout_width="0dp"
-        android:layout_height="121dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="66dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="59dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/montserrat"
         android:text="How much water would you like to drink per day?"
         android:textColor="@color/primary"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/amountTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="169dp"
+        android:layout_marginEnd="37dp"
+        android:backgroundTint="@color/material_dynamic_neutral60"
+        android:onClick="increaseGoal"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/amountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:hint="2000 ml"
-        app:layout_constraintBottom_toTopOf="@+id/addBtn"
-        app:layout_constraintEnd_toStartOf="@+id/addBtn" />
-
-    <Button
-        android:id="@+id/addBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="313dp"
-        android:layout_marginEnd="96dp"
-        android:backgroundTint="@color/material_dynamic_neutral80"
-        android:text="+"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="37dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/montserrat"
+        android:text="2000 ml"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/minusBtn"
+        app:layout_constraintStart_toEndOf="@+id/minusBtn" />
 
     <Button
         android:id="@+id/minusBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/material_dynamic_neutral80"
+        android:layout_marginStart="37dp"
+        android:backgroundTint="@color/material_dynamic_neutral60"
+        android:onClick="decreaseGoal"
         android:text="-"
-        app:layout_constraintBaseline_toBaselineOf="@+id/addBtn"
-        app:layout_constraintEnd_toStartOf="@+id/amountTextView" />
+        android:textColorHighlight="@color/material_dynamic_neutral60"
+        android:textColorLink="@color/material_dynamic_neutral60"
+        app:layout_constraintBottom_toBottomOf="@+id/addBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/addBtn" />
 
+
+    <ImageButton
+        android:id="@+id/backToMenuBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="45dp"
+        android:onClick="backToMenu"
+        android:text="Back to Menu"
+        app:layout_constraintBottom_toBottomOf="@+id/saveGoalBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/saveGoalBtn"
+        app:srcCompat="@drawable/home"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/saveGoalBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/primary"
+        android:onClick="saveGoal"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
