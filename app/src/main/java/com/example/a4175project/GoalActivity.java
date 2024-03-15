@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 
@@ -36,21 +37,23 @@ public class GoalActivity extends AppCompatActivity {
             }
         });
 
-        // Set click listener for the Back to Menu button
-        ImageButton backToMenuBtn = findViewById(R.id.backToMenuBtn);
-        backToMenuBtn.setOnClickListener(new View.OnClickListener() {
+        // Set click listener for the go to Record button
+        Button goToRecordBtn = findViewById(R.id.toRecordBtn);
+        goToRecordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                backToMenu();
+                goToRecord();
             }
         });
     }
 
     // Method to handle increasing the goal amount
+    // Method to handle increasing the goal amount
     public void increaseGoal(View view) {
         goalAmount += 100; // Increase by 100ml, you can change this value as needed
         updateGoalAmountDisplay();
     }
+
 
     // Method to handle decreasing the goal amount
     public void decreaseGoal(View view) {
@@ -74,9 +77,11 @@ public class GoalActivity extends AppCompatActivity {
     }
 
     // Method to handle the Back to Menu button click event
-    private void backToMenu() {
-        Intent intent = new Intent(this, MenuActivity.class);
+    private void goToRecord() {
+        Intent intent = new Intent(this, RecordActivity.class);
+        intent.putExtra("GOAL_AMOUNT", goalAmount);
         startActivity(intent);
         finish(); // Optional: Finish the current activity to prevent it from being stacked on top of the navigation stack
     }
+
 }

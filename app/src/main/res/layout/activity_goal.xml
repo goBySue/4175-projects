@@ -62,17 +62,18 @@
         app:layout_constraintTop_toTopOf="@+id/addBtn" />
 
 
-    <ImageButton
-        android:id="@+id/backToMenuBtn"
+    <Button
+        android:id="@+id/toRecordBtn"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginEnd="45dp"
-        android:onClick="backToMenu"
-        android:text="Back to Menu"
+        android:layout_marginEnd="44dp"
+        android:onClick="goToRecord"
+        android:text="Go Record"
+        android:backgroundTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="@+id/saveGoalBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/saveGoalBtn"
-        app:srcCompat="@drawable/home"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
