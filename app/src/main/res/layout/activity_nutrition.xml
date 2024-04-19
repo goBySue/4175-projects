@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/white"
-    tools:context=".NutritionActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
+    <EditText
+        android:id="@+id/foodEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:hint="Enter Food Item"/>
+
+    <Button
+        android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:text="This is nutrition page"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@id/foodEditText"
+        android:fontFamily="@font/montserrat"
+        android:layout_marginTop="31dp"
+        android:backgroundTint="@color/primary"
+        android:text="Search" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchButton"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@android:color/black"/>
+
+</RelativeLayout>
+
+
+    <!-- nutritionNinja API key J90O8iZATOB45dCdTMeZ2A==g4u3Kg5g0dVB8mn2 -->

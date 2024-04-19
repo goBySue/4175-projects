@@ -1,22 +1,34 @@
 package com.example.a4175project;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class Reminder {
-    private String note;
-    private String time;
+    private String title;
+    private String description;
+    private ArrayList<ToDoItem> tasks;
 
-    public Reminder(String note, String time) {
-        this.note = note;
-        this.time = time;
+    public Reminder(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.tasks = new ArrayList<>();
     }
 
-    public Reminder(String note, int hour, int minute) {
+    public String getTitle() {
+        return title;
     }
 
-    public String getNote() {
-        return note;
+    public String getDescription() {
+        return description;
     }
 
-    public String getTime() {
-        return time;
+    public ArrayList<ToDoItem> getTasks() {
+        return tasks;
+    }
+
+    public void addTask(String task) {
+        tasks.add(new ToDoItem(task));
     }
 }

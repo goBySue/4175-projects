@@ -4,50 +4,33 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import com.example.a4175project.Reminder;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.ReminderViewHolder> {
+public class ReminderAdapter extends ArrayAdapter<Reminder> {
 
-    private List<Reminder> reminderList;
-    private Context context;
-
-    public ReminderAdapter(List<Reminder> reminderList) {
-        this.context = context;
-        this.reminderList = reminderList;
-    }
-
-    @NonNull
-    @Override
-    public ReminderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.reminder_item, parent, false);
-        return new ReminderViewHolder(view);
+    public ReminderAdapter(Context context, ArrayList<Reminder> reminders) {
+        super(context, 0, reminders);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ReminderViewHolder holder, int position) {
-        Reminder reminder = reminderList.get(position);
-        holder.noteTextView.setText(reminder.getNote());
-        holder.timeTextView.setText(reminder.getTime());
-    }
+    public View getView(int position, View convertView, ViewGroup parent) {
+        Reminder reminder = getItem(position);
 
-    @Override
-    public int getItemCount() {
-        return reminderList.size();
-    }
-
-    public static class ReminderViewHolder extends RecyclerView.ViewHolder {
-        TextView noteTextView;
-        TextView timeTextView;
-
-        public ReminderViewHolder(@NonNull View itemView) {
-            super(itemView);
-            noteTextView = itemView.findViewById(R.id.noteTextView);
-            timeTextView = itemView.findViewById(R.id.timeTextView);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
         }
+
+        TextView textViewTitle = convertView.findViewById(android.R.id.text1);
+        TextView textViewDescription = convertView.findViewById(android.R.id.text2);
+
+        textViewTitle.setText(reminder.getTitle());
+        textViewDescription.setText(reminder.getDescription());
+
+        return convertView;
     }
 }

@@ -8,4 +8,8 @@
     <string name="remember_me">Remember me</string>
     <string name="login">Login</string>
     <string name="username">Username</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm password</string>
 </resources>

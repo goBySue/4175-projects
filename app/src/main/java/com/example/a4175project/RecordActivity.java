@@ -33,8 +33,10 @@ public class RecordActivity extends AppCompatActivity {
 
     // Method to handle adding 1 cup (250ml) of water
     public void addCup(View view) {
+        Log.d("AddCup", "addCup method called");
         // Increase the current amount by 250ml
         currentAmount += 250;
+        Log.d("AddCup", "Current amount: " + currentAmount);
 
         // Update the current amount TextView to reflect the current amount
         updateCurrentAmountDisplay();

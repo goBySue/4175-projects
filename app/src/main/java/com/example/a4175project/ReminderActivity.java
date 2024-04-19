@@ -1,75 +1,95 @@
 package com.example.a4175project;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.*;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Intent;
+import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
+
 public class ReminderActivity extends AppCompatActivity {
 
-    private EditText noteEditText;
-    private TimePicker timePicker;
-    private RecyclerView remindersRecyclerView;
-    private ReminderAdapter reminderAdapter;
-    private List<Reminder> reminderList;
-
+    private ArrayList<Reminder> reminders;
+    private ReminderAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
 
-        noteEditText = findViewById(R.id.noteEditText);
-        timePicker = findViewById(R.id.timePicker);
-        timePicker.setIs24HourView(true); // Set time picker to use 24-hour format
+        reminders = new ArrayList<>();
+        adapter = new ReminderAdapter(this, reminders);
 
-        // Initialize RecyclerView
-        remindersRecyclerView = findViewById(R.id.remindersRecyclerView);
-        remindersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        reminderList = new ArrayList<>();
-        reminderAdapter = new ReminderAdapter(reminderList);
-        remindersRecyclerView.setAdapter(reminderAdapter);
+        ListView listViewTasks = findViewById(R.id.listViewTasks);
+        listViewTasks.setAdapter(adapter);
+
+        // Handle click on a reminder
+        listViewTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                showAddTaskDialog(position);
+            }
+        });
+
+        Button buttonAddReminder = findViewById(R.id.buttonAddReminder);
+        buttonAddReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText editTextReminderTitle = findViewById(R.id.editTextReminderTitle);
+                EditText editTextReminderDescription = findViewById(R.id.editTextReminderDescription);
+
+                String title = editTextReminderTitle.getText().toString().trim();
+                String description = editTextReminderDescription.getText().toString().trim();
+
+                if (!title.isEmpty() && !description.isEmpty()) {
+                    addReminder(title, description);
+                    editTextReminderTitle.setText("");
+                    editTextReminderDescription.setText("");
+                }
+            }
+        });
     }
 
-    // Method to set a reminder with a note and time
-    public void setReminder(View view) {
-        String note = noteEditText.getText().toString().trim();
-        if (note.isEmpty()) {
-            Toast.makeText(this, "Please enter a note for the reminder", Toast.LENGTH_SHORT).show();
-            return;
-        }
+    private void addReminder(String title, String description) {
+        Reminder newReminder = new Reminder(title, description);
+        reminders.add(newReminder);
+        adapter.notifyDataSetChanged();
+    }
 
-        // Get the selected time from the TimePicker
-        int hour = timePicker.getHour();
-        int minute = timePicker.getMinute();
+    private void showAddTaskDialog(final int reminderPosition) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ReminderActivity.this);
+        builder.setTitle("Add Task");
 
-        // Create the new reminder
-        Reminder newReminder = new Reminder(note, hour, minute);
+        // Set up the input
+        final EditText input = new EditText(ReminderActivity.this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
 
-        // Add the new reminder to the list
-        reminderList.add(newReminder);
+        // Set up the buttons
+        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String task = input.getText().toString().trim();
+                if (!task.isEmpty()) {
+                    if (reminderPosition != -1 && reminderPosition < reminders.size()) {
+                        Reminder selectedReminder = reminders.get(reminderPosition);
+                        selectedReminder.addTask(task);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
 
-        // Notify the adapter that the data set has changed
-        reminderAdapter.notifyDataSetChanged();
-
-        // Scroll RecyclerView to the newly added item
-        remindersRecyclerView.smoothScrollToPosition(reminderList.size() - 1);
-
-        // Clear EditText
-        noteEditText.getText().clear();
-
-        Toast.makeText(this, "Reminder set successfully", Toast.LENGTH_SHORT).show();
-
+        builder.show();
     }
 }
-
