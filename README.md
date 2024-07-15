@@ -1,7 +1,4 @@
 QuenchQuest
-CSIS 4175 – 050 Project Proposal
-Student Name: Jisu Kim
-Student ID: 300353446
 
 1. Introduction
 QuenchQuest is a mobile application designed to promote better hydration habits by assisting users in tracking and achieving their daily water intake goals.
